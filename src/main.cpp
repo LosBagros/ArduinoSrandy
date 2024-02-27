@@ -149,19 +149,21 @@ void loop()
 
   // Change mode based on button presses
 
-  while (buttonState1 == LOW)
+  if (buttonState1 == LOW)
   {
     if (switchState == false)
     {
-      switchState = true;
       mode++;
       Serial.println();
       Serial.print("Mode: ");
       Serial.print(mode);
+      switchState = true;
     }
-    buttonState1 = digitalRead(tlacitkoA1);
   }
-  switchState = false;
+  else
+  {
+    switchState = false;
+  }
   if (mode > 2)
   {
     mode = 0;
